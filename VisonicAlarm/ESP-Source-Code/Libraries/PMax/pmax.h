@@ -22,7 +22,9 @@ enum PmaxCommand
     Pmax_PING,
     Pmax_GETEVENTLOG,
     Pmax_DISARM,
+    Pmax_ALARM,
     Pmax_ARMHOME,
+    Pmax_ARMHOME_INSTANT,
     Pmax_ARMAWAY,
     Pmax_ARMAWAY_INSTANT,
     Pmax_REQSTATUS,
@@ -255,7 +257,7 @@ protected:
     unsigned long m_ulLastPing; //last ping fom Pmax->Alarm
     unsigned long m_ulNextPingDeadline; //when to expect next ping from Alarm->Pmax, if it will not arrive, we will send restore command. Pings are not expected in donwload mode
 public:
-
+    long Powerlink_PIN_Code = 0x3622;
     void init(int initWaitTime = SLOW_PANEL_INIT_WAIT_TIME);
     void sendNextCommand();
     bool restoreCommsIfLost();
